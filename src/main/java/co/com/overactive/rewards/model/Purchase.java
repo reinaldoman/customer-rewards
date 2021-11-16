@@ -27,9 +27,10 @@ public class Purchase {
 	public Purchase() {
 	}
 
-	public Purchase(String description, double value ) {
+	public Purchase(String description, double value, long customerId ) {
 		this.description = description;
 		this.value = value;
+		this.customerId = customerId;
 	}
 	
 	public double getValue() {

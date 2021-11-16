@@ -41,7 +41,7 @@ public class PurchaseController {
 	@PostMapping("/purchase")
 	public Purchase postPurchase(@RequestBody Purchase purchase) {
 
-		Purchase _purchase = repository.save(new Purchase(purchase.getDescription(), purchase.getValue()));
+		Purchase _purchase = repository.save(new Purchase(purchase.getDescription(), purchase.getValue(), purchase.getCustomerId()));
 		return _purchase;
 	}
 

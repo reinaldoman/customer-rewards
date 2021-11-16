@@ -7,7 +7,7 @@
         <nav>
             <router-link class="btn btn-primary" to="/">Customers</router-link>
             <router-link class="btn btn-primary" to="/add">Add Customer</router-link>
-            <router-link class="btn btn-primary" to="/add">Add Purchases</router-link>
+            <router-link class="btn btn-primary" to="/add-purchases">Add Purchases</router-link>
             <router-link class="btn btn-primary" to="/search">Search</router-link>
         </nav>
         <br/>
