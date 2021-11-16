@@ -1,8 +1,8 @@
 <template>
   <div class="searchform">
-    <h4>Find by Age</h4>
+    <h4>Find by Name</h4>
     <div class="form-group">
-      <input type="number" class="form-control" id="age" required v-model="age" name="age">
+      <input class="form-control" type="text" id="name" required v-model="name" name="name">
     </div>
  
     <div class="btn-group">
@@ -11,7 +11,7 @@
 
     <ul class="search-result">
       <li v-for="(customer, index) in customers" :key="index">
-        <h6>{{customer.name}} ({{customer.age}})</h6>
+        <h6>{{customer.name}}</h6>
       </li>
     </ul>
   </div>
@@ -24,7 +24,7 @@ export default {
   name: "search-customer",
   data() {
     return {
-      age: 0,
+      name: '',
       customers: []
     };
   },
@@ -32,7 +32,7 @@ export default {
     /* eslint-disable no-console */
     searchCustomers() {
       http
-        .get("/customers/age/" + this.age)
+        .get("/customers/name/" + this.name)
         .then(response => {
           this.customers = response.data; // JSON are parsed automatically.
           console.log(response.data);

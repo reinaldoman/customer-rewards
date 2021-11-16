@@ -6,11 +6,6 @@
           <input type="text" class="form-control" id="name" required v-model="customer.name" name="name">
         </div>
     
-        <div class="form-group">
-          <label for="age">Age</label>
-          <input type="number" class="form-control" id="age" required v-model="customer.age" name="age">
-        </div>
-    
         <button v-on:click="saveCustomer" class="btn btn-success">Submit</button>
     </div>
     
@@ -30,9 +25,7 @@ export default {
     return {
       customer: {
         id: 0,
-        name: "",
-        age: 0,
-        active: false
+        name: ""
       },
       submitted: false
     };
@@ -41,8 +34,7 @@ export default {
     /* eslint-disable no-console */
     saveCustomer() {
       var data = {
-        name: this.customer.name,
-        age: this.customer.age
+        name: this.customer.name
       };
 
       http
