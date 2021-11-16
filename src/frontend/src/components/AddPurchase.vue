@@ -93,7 +93,6 @@ export default {
 
     setSelectedCustomer(selectedCustomer) {
         this.selectedCustomer = selectedCustomer
-        console.log('INSIDE SELECTED SET CUSTOMER ' + JSON.stringify(this.selectedCustomer))
     }
 
   },

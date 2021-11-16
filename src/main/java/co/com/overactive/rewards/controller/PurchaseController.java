@@ -54,10 +54,10 @@ public class PurchaseController {
 		return new ResponseEntity<>("Purchase has been deleted!", HttpStatus.OK);
 	}
 
-	@GetMapping("purchases/description/{description}")
-	public List<Purchase> findByDescription(@PathVariable String description) {
+	@GetMapping("purchases/customer/{customerId}")
+	public List<Purchase> findByCustomerId(@PathVariable long customerId) {
 
-		List<Purchase> purchases = repository.findByDescription(description);
+		List<Purchase> purchases = repository.findByCustomerId(customerId);
 		return purchases;
 	}
 

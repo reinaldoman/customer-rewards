@@ -35,7 +35,7 @@ export default {
       http
         .get("/customers")
         .then(response => {
-          this.customers = response.data; // JSON are parsed automatically.
+          this.customers = response.data;
           console.log(response.data);
         })
         .catch(e => {

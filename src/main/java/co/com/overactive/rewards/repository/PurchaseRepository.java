@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import co.com.overactive.rewards.model.Purchase;
 
 public interface PurchaseRepository extends CrudRepository<Purchase, Long> {
-	List<Purchase> findByDescription(String description);
+	List<Purchase> findByCustomerId(long customerId);
 }

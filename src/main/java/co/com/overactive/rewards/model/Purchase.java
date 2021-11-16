@@ -24,6 +24,9 @@ public class Purchase {
 	@Column(name = "customerId")
 	private long customerId;
 	
+	@Column(name = "rewardedPoints")
+	private long rewardedPoints;
+	
 	public Purchase() {
 	}
 
@@ -31,6 +34,7 @@ public class Purchase {
 		this.description = description;
 		this.value = value;
 		this.customerId = customerId;
+		this.rewardedPoints = calculatePoints();
 	}
 	
 	public double getValue() {
@@ -59,6 +63,25 @@ public class Purchase {
 
 	public String getDescription() {
 		return this.description;
+	}
+	
+	private long calculatePoints() {
+		long points = 0;
+		long totalPoints = 0;
+		if(this.value > 100)
+			points = (long)(value - 100) * 2;
+		if(this.value > 50)
+			totalPoints = (long)(value - 50);
+		totalPoints = totalPoints + points;
+		return totalPoints;
+	}
+	
+	public long getRewardedPoints() {
+		return rewardedPoints;
+	}
+
+	public void setRewardedPoints(long rewardedPoints) {
+		this.rewardedPoints = rewardedPoints;
 	}
 	
 	@Override
