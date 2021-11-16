@@ -20,6 +20,11 @@
           <label for="value">Value</label>
           <input type="number" class="form-control" id="value" required v-model="purchase.value" name="value">
         </div>
+
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" id="date" required v-model="selectedDate" name="date" @change="setSelectedDate(selectedDate)">
+        </div>
     
         <button v-on:click="savePurchase" class="btn btn-success">Submit</button>
     </div>
@@ -41,10 +46,12 @@ export default {
       purchase: {
         id: 0,
         description: "",
-        value: 0
+        value: 0,
+        date: null
       },
       customers: [{text: '', value: 0}],
       selectedCustomer: 0,
+      selectedDate: null,
       submitted: false
     };
   },
@@ -55,7 +62,8 @@ export default {
       var data = {
         description: this.purchase.description,
         value: this.purchase.value,
-        customerId: this.selectedCustomer
+        customerId: this.selectedCustomer,
+        date: this.selectedDate
       };
 
       http
@@ -93,6 +101,10 @@ export default {
 
     setSelectedCustomer(selectedCustomer) {
         this.selectedCustomer = selectedCustomer
+    },
+
+    setSelectedDate(setSelectedDate) {
+        this.setSelectedDate = setSelectedDate
     }
 
   },

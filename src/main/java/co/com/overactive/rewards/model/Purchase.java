@@ -1,5 +1,7 @@
 package co.com.overactive.rewards.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,13 +29,17 @@ public class Purchase {
 	@Column(name = "rewardedPoints")
 	private long rewardedPoints;
 	
+	@Column(name = "date")
+	private Date date;
+	
 	public Purchase() {
 	}
 
-	public Purchase(String description, double value, long customerId ) {
+	public Purchase(String description, double value, long customerId, Date date) {
 		this.description = description;
 		this.value = value;
 		this.customerId = customerId;
+		this.date = date;
 		this.rewardedPoints = calculatePoints();
 	}
 	
@@ -82,6 +88,14 @@ public class Purchase {
 
 	public void setRewardedPoints(long rewardedPoints) {
 		this.rewardedPoints = rewardedPoints;
+	}
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 	@Override
