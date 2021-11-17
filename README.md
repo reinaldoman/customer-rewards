@@ -50,4 +50,6 @@ PUT /api/purchase/{id} #Update purchase
 
  Navigate to http://localhost:4200/
 
+Any problems? Contact me.
+
  Enjoy.
