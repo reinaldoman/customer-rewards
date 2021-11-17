@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,12 +27,14 @@ import co.com.overactive.rewards.repository.PurchaseRepository;
 @RequestMapping("/api")
 public class PurchaseController {
 
+	private static final Logger log = LoggerFactory.getLogger(PurchaseController.class);
+	
 	@Autowired
 	PurchaseRepository repository;
 
 	@GetMapping("/purchases")
-	public List<Purchase> getAllCustomers() {
-		System.out.println("Get all Purchases...");
+	public List<Purchase> getAllPurchases() {
+		log.info("Get all Purchases...");
 
 		List<Purchase> purchases = new ArrayList<>();
 		repository.findAll().forEach(purchases::add);
@@ -47,7 +51,7 @@ public class PurchaseController {
 
 	@DeleteMapping("/purchase/{id}")
 	public ResponseEntity<String> deletePurchase(@PathVariable("id") long id) {
-		System.out.println("Delete Purchase with ID = " + id + "...");
+		log.info("Delete Purchase with ID = " + id + "...");
 
 		repository.deleteById(id);
 
@@ -70,7 +74,7 @@ public class PurchaseController {
 
 	@PutMapping("/purchase/{id}")
 	public ResponseEntity<Purchase> updatePurchase(@PathVariable("id") long id, @RequestBody Purchase purchase) {
-		System.out.println("Update Purchase with ID = " + id + "...");
+		log.info("Update Purchase with ID = " + id + "...");
 
 		Optional<Purchase> purchaseData = repository.findById(id);
 

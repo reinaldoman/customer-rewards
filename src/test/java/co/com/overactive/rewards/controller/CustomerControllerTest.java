@@ -1,0 +1,59 @@
+package co.com.overactive.rewards.controller;
+
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import co.com.overactive.rewards.App;
+import co.com.overactive.rewards.model.Customer;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CustomerControllerTest {
+	
+	@Autowired
+	private TestRestTemplate restTemplate;
+
+	@LocalServerPort
+	private int port;
+
+	private String getRootUrl() {
+		return "http://localhost:" + port;
+	}
+
+	@Test
+	public void contextLoads() {
+
+	}
+
+	@Test
+	public void testGetAllCustomers() {
+		HttpHeaders headers = new HttpHeaders();
+		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/api/customers",
+				HttpMethod.GET, entity, String.class);
+		
+		assertNotNull(response.getBody());
+	}
+
+	@Test
+	public void testPostCustomer() {
+		Customer customer = new Customer("Unit Test Customer");
+		
+		ResponseEntity<Customer> _customer = restTemplate.postForEntity(getRootUrl() + "/api/customer", customer, Customer.class);
+		
+		System.out.println(_customer.getBody().getId());
+		assertNotNull(_customer);
+	}
+}

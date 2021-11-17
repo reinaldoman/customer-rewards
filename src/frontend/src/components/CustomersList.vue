@@ -36,7 +36,6 @@ export default {
         .get("/customers")
         .then(response => {
           this.customers = response.data;
-          console.log(response.data);
         })
         .catch(e => {
           console.log(e);
