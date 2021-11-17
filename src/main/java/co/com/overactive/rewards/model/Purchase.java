@@ -71,6 +71,7 @@ public class Purchase {
 		return this.description;
 	}
 	
+	//TODO: Move this values to config in properties file.
 	private long calculatePoints() {
 		long points = 0;
 		long totalPoints = 0;
