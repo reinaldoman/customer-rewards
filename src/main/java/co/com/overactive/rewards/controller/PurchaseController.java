@@ -60,6 +60,13 @@ public class PurchaseController {
 		List<Purchase> purchases = repository.findByCustomerId(customerId);
 		return purchases;
 	}
+	
+	@GetMapping("purchases/customer/points/{customerId}")
+	public List<Purchase> findMonthlyPointsByCustomerId(@PathVariable long customerId) {
+
+		List<Purchase> purchases = repository.findMonthlyPointsByCustomerId(customerId);
+		return purchases;
+	}
 
 	@PutMapping("/purchase/{id}")
 	public ResponseEntity<Purchase> updatePurchase(@PathVariable("id") long id, @RequestBody Purchase purchase) {

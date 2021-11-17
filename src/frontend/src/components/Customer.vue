@@ -13,7 +13,7 @@
       <h4>Purchases</h4>
       <div>
         <template>
-          <v-simple-table>
+          <v-simple-table dense height="300px">
             <template v-slot:default>
               <thead>
                 <tr>
@@ -22,6 +22,9 @@
                   </th>
                   <th class="text-left">
                     Description
+                  </th>
+                  <th class="text-left">
+                    Date
                   </th>
                   <th class="text-left">
                     Points
@@ -35,6 +38,7 @@
                 >
                   <td>{{ item.value }}</td>
                   <td>{{ item.description }}</td>
+                  <td>{{ item.date }}</td>
                   <td>{{ item.points }}</td>
                 </tr>
               </tbody>
@@ -75,7 +79,7 @@ export default {
         .then(response => {
           console.log(JSON.stringify(response));
           response.data.forEach((obj)=>{
-              this.purchases.push({ value: obj.value, description: obj.description, points: obj.rewardedPoints })
+              this.purchases.push({ value: obj.value, description: obj.description, date: obj.date, points: obj.rewardedPoints })
           })
         })
         .catch(e => {
